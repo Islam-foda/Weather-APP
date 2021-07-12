@@ -23,12 +23,12 @@ let port = 2000;
 app.listen(port,running)
 function running(){console.log('Server Running on port',port);};
 
-//add get route to send pack the data in the object projectData
+//add get route to send pack the data included in the projectData object
 app.get("/send",(req,res)=>{
     res.status(200).send(projectData)
 })
 
-
+//post route to save the data sent with post request from the app
 app.post("/savedata",saveData)
 
 function saveData(req,res){

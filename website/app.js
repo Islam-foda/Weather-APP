@@ -47,7 +47,6 @@ button.onclick =  function(){//after clicking it will make as follow
    document.querySelector("#temp").innerHTML = `Today Temperature In Celesuis Is: ${lastResult.temp}${dg}`;
    document.querySelector("#content").innerHTML = `I see that You're ${lastResult.content}`;
   
-    //console.log(res)})
 })}
 //================= 1- asynch Function (fetch the data from openweather) ============================//
 // to fetch the Data from openWeather Website, and extract the (temp) from it which we will use later.//
