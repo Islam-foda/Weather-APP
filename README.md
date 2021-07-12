@@ -17,6 +17,7 @@
   * Node.js.
   * express.
   * cors and body-parser as a middleware.
+  * external API from `https://openweathermap.org`
 # How to Use:
   * install necessary Modules using `npm install`.
   * run `server.js` with npm start.
