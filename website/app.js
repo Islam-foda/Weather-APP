@@ -6,7 +6,9 @@ const button = document.getElementById("generate")
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
-
+//snipit from MDN
+var options = { weekday: 'long'};
+let dayInLetter = new Intl.DateTimeFormat('en-US',options).format(new Date());
 
 
 
@@ -27,6 +29,12 @@ button.onclick =  function(){
      const serverResponse = await fetch('/send')
      let lastResult = await serverResponse.json()
      console.log(lastResult);
+     //snipit from w3school
+     let circle = "o";
+     let dg = circle.sup()
+   document.querySelector("#date").innerHTML = `Today is: ${dayInLetter}, ${lastResult.date}`
+   document.querySelector("#temp").innerHTML = `Today Temperature In Celesuis Is: ${lastResult.temp}${dg}`
+   document.querySelector("#content").innerHTML = `I see that You're ${lastResult.content}`
   
     console.log(res)})
 }
