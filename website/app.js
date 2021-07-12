@@ -6,16 +6,27 @@ const button = document.getElementById("generate")
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
-const feeling = document.getElementById("feelings").value;
 
 
 
 
 button.onclick =  function(){
   console.log("pressed");
-  grapTemp().then((res)=>{
-     let temp = document.querySelector("#temp")
-     temp.innerHTML = res
+  grapTemp().then(async(res)=>{
+    const feeling = document.getElementById("feelings").value;
+     await fetch('/savedata',{
+       method: "POST",
+       credentials: "same-origin",
+       headers:{"content-type":"application/json"},
+       body:JSON.stringify({
+         date: newDate,
+         temp : res,
+         content: feeling
+       })
+     })
+     const serverResponse = await fetch('/send')
+     let lastResult = await serverResponse.json()
+     console.log(lastResult);
   
     console.log(res)})
 }
