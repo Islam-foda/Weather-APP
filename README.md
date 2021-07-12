@@ -13,7 +13,7 @@
       3- package.json
       4- package-lock.json
       
-# Used Feathures:
+# Used Features:
   * Node.js.
   * express.
   * cors and body-parser as a middleware.
