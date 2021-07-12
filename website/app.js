@@ -5,35 +5,32 @@ const button = document.getElementById("generate")
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
+const feeling = document.getElementById("feelings").value;
 
-button.onclick =   function(){
-    console.log("pressed");
-grapTemp()
+
+
+
+button.onclick =  function(){
+  console.log("pressed");
+  grapTemp().then((res)=>{
+     let temp = document.querySelector("#temp")
+     temp.innerHTML = res
+  
+    console.log(res)})
 }
-
 
 async function grapTemp(){
-    const zipCode = document.getElementById('zip').value
-    const baseUrl =   `http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=31c72989e923f5a48e357d3edaf94f5c&units=metric`;
-  //first action which fethc the url of openweather with the value of the zip code input to grap temp.
-    fetchUrl(baseUrl,zipCode).then((res)=>{
-        const temp = res;
-        console.log(temp)})
- 
-}
-const fetchUrl = async (url,zip)=>{
-
-    const res = await fetch(url)
-    try {
-      const data = await res.json();
-      const temp = data.main.temp
-      //console.log(temp,data)
-      return temp;
-    }  catch(error) {
-    console.error();;
-    }
+  const zipCode = document.getElementById("zip").value;
+  if (!zipCode) {
+    alert("please Enter Zip code");
+    return;
   }
-
-
+  const baseUrl =   `http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}&units=metric`;
+    const res = await fetch(baseUrl)
+    const allData =await res.json()
+    const temp = allData.main.temp
+     //console.log(temp);
+  return temp
+}
 

@@ -21,4 +21,16 @@ app.use(express.static('website'));
 // Setup Server
 let port = 2000;
 app.listen(port,running)
-function running(){console.log('Server Running on port',port);}
+function running(){console.log('Server Running on port',port);};
+
+//add get route to send pack the data in the object projectData
+app.get("/send",(req,res)=>{
+    res.status(200).send(projectData)
+})
+
+
+app.post("/savedata",saveData)
+function saveData(req,res){
+    projectData = req.body;
+    res.end();
+}
