@@ -57,7 +57,7 @@ async function grapTemp(){
     alert("please Enter a Zip code");
     return;
   }
-  const baseUrl =   `http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}&units=metric`;
+  const baseUrl =   `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}&units=metric`;
     const res = await fetch(baseUrl)//fetch the data from the openweather, after input the zip code.
     const allData =await res.json() //return the Data in a json opject format to be readable.
     const temp = allData.main.temp //assign a variable to target Data (temperature).
