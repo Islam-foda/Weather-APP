@@ -19,7 +19,7 @@ app.use(express.static('website'));
 
 
 // Setup Server
-let port = 2000;
+let port = process.env.PORT || 2000;
 app.listen(port,running)
 function running(){console.log('Server Running on port',port);};
 
